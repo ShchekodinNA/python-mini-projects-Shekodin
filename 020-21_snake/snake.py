@@ -4,14 +4,16 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 SHAPE = "square"
+HEAD_COLOR = "red"
 
 
 class Snake:
     def __init__(self, segments_num):
+        self.start_segments = segments_num
         self.segments_num = segments_num
         self.snake_segments = []
-        self.create_snake()
-        self.snake_head = self.snake_segments[0]
+        self.snake_head = Turtle()
+        self.reset_snake()
 
     def create_snake(self):
         for i in range(self.segments_num):
@@ -56,4 +58,11 @@ class Snake:
         new_seg.backward(20)
         self.snake_segments.append(new_seg)
 
-
+    def reset_snake(self):
+        for segment in self.snake_segments:
+            segment.goto(x=10000, y=10000)
+        self.snake_segments.clear()
+        self.segments_num = self.start_segments
+        self.create_snake()
+        self.snake_head = self.snake_segments[0]
+        self.snake_head.color(HEAD_COLOR)
