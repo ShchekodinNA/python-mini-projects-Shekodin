@@ -4,6 +4,7 @@ PINK = "#FFA8A8"
 RED = "#C74B50"
 GREEN = "#99FFCD"
 YELLOW = "#E7FBBE"
+BLACK = "#180A0A"
 FONT_NAME = "Courier"
 SCND_FNT_NM = "Consolas"
 WORK_MIN = 25
@@ -69,6 +70,9 @@ def timer_pm(sec_in):
     cnvs.itemconfig(timer_txt, text=f"{min}:{sec}")
     if sec_in < 1:
         brn_start.config(state="normal")
+        cnvs.config(bg=BLACK)
+        wndw.attributes('-topmost', True)
+        wndw.attributes('-topmost', False)
         return
     timer = wndw.after(1000, timer_pm, sec_in - 1)
 
@@ -76,6 +80,7 @@ def timer_pm(sec_in):
 # set GUI:
 
 wndw = Tk()
+wndw.resizable(False, False)
 wndw.minsize(height=300, width=300)
 wndw.maxsize(height=300, width=300)
 wndw.config(bg=YELLOW)
