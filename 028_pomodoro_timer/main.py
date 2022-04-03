@@ -70,7 +70,7 @@ def timer_pm(sec_in):
     if sec_in < 1:
         brn_start.config(state="normal")
         return
-    timer = wndw.after(1, timer_pm, sec_in - 1)
+    timer = wndw.after(1000, timer_pm, sec_in - 1)
 
 
 # set GUI:
