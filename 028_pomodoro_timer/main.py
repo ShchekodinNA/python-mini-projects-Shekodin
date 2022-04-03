@@ -27,6 +27,7 @@ def rest_part(tme):
 
 def start_push():
     global reps, mark, cycles
+    brn_start.config(state="disabled")
     if reps == 1:
         cnvs.itemconfig(wrk_rst_txt, text="REST", fill=GREEN)
         reps = AMOUNT_OF_SESSIONS * 2 + 1
@@ -48,6 +49,7 @@ def start_push():
 
 def reset_push():
     global reps, mark
+    brn_start.config(state="normal")
     wndw.after_cancel(timer)
     cnvs.config(bg=YELLOW)
     cnvs.itemconfig(wrk_rst_txt, text="")
@@ -66,6 +68,7 @@ def timer_pm(sec_in):
         sec = f"0{sec}"
     cnvs.itemconfig(timer_txt, text=f"{min}:{sec}")
     if sec_in < 1:
+        brn_start.config(state="normal")
         return
     timer = wndw.after(1, timer_pm, sec_in - 1)
 
